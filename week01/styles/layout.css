@@ -13,8 +13,8 @@ body{
     grid-template-rows: auto auto 1fr auto;
     grid-template-areas: 
         "header header"
-        "main sidebar"
-        "main sidebar"
+        "main aside"
+        "main aside"
         "footer footer"
     ;
     min-height: 100vh;
