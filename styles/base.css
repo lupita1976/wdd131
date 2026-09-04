@@ -4,3 +4,171 @@
     box-sizing: border-box;
 
 }
+body{
+    font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+    color: #1F2A24;
+    background-color: #f2f0ec;
+    line-height: 1.55;
+}
+h1, h2, h3 {
+    font-family: serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+a{
+    color: #c97b3d;
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+
+header {
+  background-color: #1F2A24;
+  color: #F2F0EC;
+}
+ 
+#course-title {
+  display: block;
+  text-align: center;
+  padding: 1rem 1rem 0.75rem;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+ 
+nav {
+  background-color: #14201a;
+  border-top: 1px solid #2F7A4D;
+}
+ 
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+ 
+nav ul li a {
+  display: block;
+  padding: 0.85rem 0.25rem;
+  color: #F2F0EC;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+ 
+nav ul li a:hover,
+nav ul li a:focus-visible {
+  border-bottom-color: #C97B3D;
+  color: #C97B3D;
+}
+footer {
+  background-color: #1F2A24;
+  color: #F2F0EC;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+}
+ 
+footer p + p {
+  margin-top: 0.35rem;
+  color: #a9c9b6;
+}
+main{
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
+}
+main > h1{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+.card-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+.card{
+    background-color: #ffffff;
+    border: 1px solid #dcd8cf;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.card > h2{
+    background-color: #1f2a24;
+    color: #f2f0ec;
+    font-size: 1.05rem;
+    padding: 0.85rem 1.25rem;
+}
+.about-content{
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+}
+.about-content p {
+  flex: 1;
+}
+ 
+.profile-photo {
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+ 
+.hometown {
+  border-top: 1px solid #dcd8cf;
+  padding: 1.25rem;
+}
+ 
+.hometown h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+ 
+.hometown-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+ 
+.hometown-content img {
+  margin: 0 auto;
+}
+ 
+.resource-list {
+  list-style: none;
+  padding: 1.25rem;
+}
+ 
+.resource-list li + li {
+  margin-top: 0.6rem;
+}
+ 
+.resource-list a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+ 
+.resource-list a:hover,
+.resource-list a:focus-visible {
+  border-bottom-color: #C97B3D;
+}
+
+@media(max-width: 620px){
+    .about-content{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    nav ul{
+        gap: 1.25rem;
+    }
+}
