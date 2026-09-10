@@ -1,20 +1,44 @@
+
 const input = document.getElementById("chapter-input");
 const button = document.getElementById("add-button");
 const list = document.getElementById("chapter-list");
 
-const listItem = document.createElement("li");
+
+button.addEventListener("click", () => {
+
+  
+  if (input.value === "") {
+    input.focus();
+    return;
+  }
+
+  const listItem = document.createElement("li");
+
+ 
+  const deleteButton = document.createElement("button");
+
+  
+  listItem.textContent = input.value;
+
+ 
+  deleteButton.textContent = "❌";
+  deleteButton.setAttribute("aria-label", `Remove ${input.value}`);
+
+ 
+  deleteButton.addEventListener("click", () => {
+    listItem.remove();
+  });
 
 
-const deleteButton = document.createElement("button");
+  listItem.appendChild(deleteButton);
+
+ 
+  list.appendChild(listItem);
 
 
-listItem.textContent = input.value;
+  input.value = "";
 
-deleteButton.textContent = "❌";
-deleteButton.setAttribute("aria-label", "Close");
-
-listItem.appendChild(deleteButton);
-
-
-list.appendChild(listItem);
+  
+  input.focus();
+});
 
