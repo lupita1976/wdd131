@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temple Album – Alain Aguilar Sanchez</title>
+  <meta name="description" content="WDD 131 - Temple Album. Guadalupe Fernández Léon. Responsive gallery example" />
+  <meta name="author" content="Alain Aguilar Sanchez" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/temples.css" />
+  <link rel="stylesheet" href="styles/temples-large.css" />
+
+  <script src="scripts/temples.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <span class="site-title">Temple Album</span>
+
+    <button id="hamburger" aria-label="Open Menu" aria-expanded="false" aria-controls="primary-nav">
+      &#9776;
+    </button>
+
+    <nav id="primary-nav">
+      <ul>
+        <li><a href="temples.html" class="current">Home</a></li>
+        <li><a href="#">Old</a></li>
+        <li><a href="#">New</a></li>
+        <li><a href="#">Large</a></li>
+        <li><a href="#">Small</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Home</h1>
+
+    <div class="gallery">
+
+      <figure>
+        <img src="images/saltlake.jpg" alt="Salt Lake Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Salt Lake, Utah</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/puebla.jpg" alt="Puebla Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Puebla, México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/mexico.jpg" alt="Ciudad de México Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Ciudad de México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/mty.jpg" alt="Monterrey, Mexico Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Monterrey, México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/chihuahua.jpg" alt="Chihuahua México, Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Chihuahua, México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/tijuanajpg.jpg" alt="Tijuana México, Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Tijuana, México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/toluca.jpg" alt="Toluca México, Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Toluca, México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/tampicojpg.jpg" alt="Tampico México, Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Tempico, México</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/culiacan.jpg" alt="Culiacan México, Temple" loading="lazy" width="400" height="300" />
+        <figcaption>Culiacan, México</figcaption>
+      </figure>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="currentyear"></span> Guadalupe Fernández León &mdash; Querétaro, México</p>
+    <p id="lastModified"></p>
+  </footer>
+
+</body>
+</html>
