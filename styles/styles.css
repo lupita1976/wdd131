@@ -52,7 +52,7 @@ header h1 {
 
 main {
     width: 100%;
-    max-width: 100%
+    max-width: 100%;
     margin: 0 auto;
     position: relative;
     background-color: var(--color-white);
