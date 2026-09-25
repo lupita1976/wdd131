@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Album – Guadalupe Fernández</title>
+    <link rel="stylesheet" href="styles/filtered-temples.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="site-title">Temple Album</div>
+        <button id="hamburger" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+        <nav id="primary-nav">
+            <ul>
+                <li><a href="filtered-temples.html" class="current">Home</a></li>
+                <li><a href="#" data-filter="old">Old</a></li>
+                <li><a href="#" data-filter="new">New</a></li>
+                <li><a href="#" data-filter="large">Large</a></li>
+                <li><a href="#" data-filter="small">Small</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Home</h1>
+        <div class="gallery" id="temple-gallery"></div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentyear"></span> Guadalupe Fernández León — Querétaro, México</p>
+        <p id="lastModified"></p>
+    </footer>
+
+    <script src="scripts/temples.js" defer></script>
+</body>
+</html>
