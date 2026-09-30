@@ -93,10 +93,7 @@ figure {
     border-radius: 4px;
     overflow: hidden;
 }
-figure img {
-    width: 100%;
-    height: auto;
-}
+
 figcaption {
     padding: 0.6rem 0.75rem;
     text-align: center;
