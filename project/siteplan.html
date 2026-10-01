@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site plan for Flavor Journey - a recipe collection website">
+    <title>Flavor Journey - Site Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/siteplan.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Flavor Journey — Site Plan</h1>
+            <p class="subtitle">Website Planning Document | WDD 131 Project</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== 1. SITE NAME ===== -->
+        <section id="site-name" class="plan-section">
+            <h2>1. Site Name</h2>
+            <div class="content-block">
+                <h3>Flavor Journey</h3>
+                <p>
+                    The name "Flavor Journey" represents a culinary exploration through recipes from different
+                    cuisines around the world. "Flavor" evokes the sensory experience of cooking and eating,
+                    while "Journey" suggests discovery, adventure, and the idea that each recipe takes you
+                    to a different place. Together, they create a memorable brand that communicates the
+                    site's purpose: to guide users through a world of diverse flavors and cooking traditions.
+                </p>
+                <p class="domain-note">
+                    <strong>Optional domain availability:</strong> flavorjourney.com / flavorjourney.org
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== 2. SITE PURPOSE ===== -->
+        <section id="site-purpose" class="plan-section">
+            <h2>2. Site Purpose</h2>
+            <div class="content-block">
+                <p>
+                    Flavor Journey is an informational recipe collection website that provides a curated
+                    hub of authentic recipes from diverse global cuisines. The site serves home cooks of
+                    all skill levels who want to explore international cooking.
+                </p>
+                <p>The site provides the following services and information:</p>
+                <ul>
+                    <li>A browsable and searchable collection of recipes organized by cuisine type (Italian, Mexican, Asian, Mediterranean, etc.)</li>
+                    <li>Detailed recipe pages with ingredients, step-by-step instructions, prep/cook times, and difficulty levels</li>
+                    <li>The ability for users to save favorite recipes using localStorage</li>
+                    <li>A form for users to submit their own recipes to share with the community</li>
+                    <li>Information about the site creator and how to get in touch</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== 3. SCENARIOS ===== -->
+        <section id="scenarios" class="plan-section">
+            <h2>3. Scenarios</h2>
+            <div class="content-block">
+                <p>
+                    The following scenarios represent questions that typical site visitors (our target audience)
+                    might ask when visiting Flavor Journey:
+                </p>
+
+                <div class="scenario">
+                    <h3>Scenario 1 — Maria, a busy working parent</h3>
+                    <p>
+                        <em>"I want to cook something different for dinner tonight, but I only have 30 minutes
+                        and need something my kids will actually eat. What quick and easy recipes do you have
+                        that aren't too complicated?"</em>
+                    </p>
+                    <p>
+                        <strong>How the site answers this:</strong> Maria can use the search bar to find recipes
+                        by prep time, filter by difficulty level ("Easy"), and browse recipes with short cook
+                        times. The recipe cards clearly display prep time and difficulty so she can quickly
+                        find a suitable option.
+                    </p>
+                </div>
+
+                <div class="scenario">
+                    <h3>Scenario 2 — James, a college student exploring cooking</h3>
+                    <p>
+                        <em>"I've been watching cooking videos and want to try making authentic Italian food
+                        for the first time. Where do I start, and what ingredients do I need?"</em>
+                    </p>
+                    <p>
+                        <strong>How the site answers this:</strong> James can filter recipes by "Italian" cuisine,
+                        view detailed recipe pages with complete ingredient lists and step-by-step instructions,
+                        and save his favorites to try later. The site also provides difficulty ratings so he
+                        can start with beginner-friendly options.
+                    </p>
+                </div>
+
+                <div class="scenario">
+                    <h3>Scenario 3 — Sofia, an experienced home cook</h3>
+                    <p>
+                        <em>"I have a family recipe I've been making for years and I'd love to share it with
+                        others. How can I contribute my recipe to this site?"</em>
+                    </p>
+                    <p>
+                        <strong>How the site answers this:</strong> Sofia can navigate to the "Submit a Recipe"
+                        page, fill out the submission form with her recipe details, and her recipe will be
+                        saved and displayed on the site for others to enjoy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 4. COLOR SCHEMA ===== -->
+        <section id="color-schema" class="plan-section">
+            <h2>4. Color Schema</h2>
+            <div class="content-block">
+                <p>
+                    The color palette for Flavor Journey is warm and inviting, inspired by the colors of
+                    fresh ingredients and rustic kitchens. The scheme uses earthy tones that evoke comfort
+                    and appetite.
+                </p>
+
+                <div class="color-grid">
+                    <div class="color-swatch" style="background-color: #e07a5f;">
+                        <div class="color-info">
+                            <strong>Primary — Terracotta</strong>
+                            <span class="hex-code">#e07a5f</span>
+                            <p>Used for: Call-to-action buttons, active navigation links, hover states, accents, and the hero section gradient. This warm coral-red evokes appetite and energy.</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch" style="background-color: #3d405b;">
+                        <div class="color-info">
+                            <strong>Secondary — Dark Navy</strong>
+                            <span class="hex-code">#3d405b</span>
+                            <p>Used for: Header text, headings (h1, h2), footer background, and the hero section background. Provides strong contrast and a professional feel.</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch" style="background-color: #81b29a;">
+                        <div class="color-info">
+                            <strong>Accent — Sage Green</strong>
+                            <span class="hex-code">#81b29a</span>
+                            <p>Used for: Cuisine category badges, the CTA section background, and success messages. Represents freshness and natural ingredients.</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch" style="background-color: #fdfbf7;">
+                        <div class="color-info">
+                            <strong>Background — Warm Cream</strong>
+                            <span class="hex-code">#fdfbf7</span>
+                            <p>Used for: Main page background. A warm off-white that is easier on the eyes than pure white and complements the food photography.</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch" style="background-color: #f4f1ea;">
+                        <div class="color-info">
+                            <strong>Background Alt — Light Beige</strong>
+                            <span class="hex-code">#f4f1ea</span>
+                            <p>Used for: Alternate section backgrounds (search section), card backgrounds, and subtle separators. Adds visual depth without overwhelming.</p>
+                        </div>
+                    </div>
+
+                    <div class="color-swatch" style="background-color: #2d2d2d;">
+                        <div class="color-info">
+                            <strong>Text — Charcoal</strong>
+                            <span class="hex-code">#2d2d2d</span>
+                            <p>Used for: Body text and paragraph content. Provides excellent readability against the light backgrounds with strong contrast ratio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="note">
+                    <strong>✓ This document uses the selected color schema above.</strong>
+                    The headings use the Dark Navy (#3d405b), the body text uses Charcoal (#2d2d2d),
+                    the background uses Warm Cream (#fdfbf7), and accent elements use Terracotta (#e07a5f)
+                    and Sage Green (#81b29a).
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== 5. TYPOGRAPHY ===== -->
+        <section id="typography" class="plan-section">
+            <h2>5. Typography</h2>
+            <div class="content-block">
+                <p>
+                    Two fonts are selected for the Flavor Journey website to create a balance between
+                    elegance and readability:
+                </p>
+
+                <div class="font-examples">
+                    <div class="font-card">
+                        <h3 class="font-heading-example" style="font-family: 'Playfair Display', serif;">
+                            Playfair Display
+                        </h3>
+                        <p class="font-meta">
+                            <strong>Type:</strong> Serif | <strong>Source:</strong> Google Fonts
+                        </p>
+                        <p class="font-usage">
+                            <strong>Used for:</strong> Main headings (h1), section titles (h2), and the site logo.
+                            This elegant serif font adds a touch of sophistication and culinary artistry to
+                            the site, reminiscent of cookbook covers and restaurant menus.
+                        </p>
+                        <p class="font-sizes">
+                            <strong>Sizes:</strong> h1: 2.5–3.5rem (responsive) | h2: 1.75–2.5rem | Logo: 1.5rem
+                        </p>
+                    </div>
+
+                    <div class="font-card">
+                        <h3 class="font-body-example" style="font-family: 'Open Sans', sans-serif;">
+                            Open Sans
+                        </h3>
+                        <p class="font-meta">
+                            <strong>Type:</strong> Sans-serif | <strong>Source:</strong> Google Fonts
+                        </p>
+                        <p class="font-usage">
+                            <strong>Used for:</strong> Body text, paragraphs, navigation links, buttons,
+                            recipe card content, form labels, and all UI elements. This clean, highly
+                            legible sans-serif font ensures readability across all screen sizes and is
+                            optimized for web use.
+                        </p>
+                        <p class="font-sizes">
+                            <strong>Sizes:</strong> Body: 1rem | Small text: 0.9rem | Buttons: 1.1rem | Nav: 1rem
+                        </p>
+                    </div>
+                </div>
+
+                <p class="note">
+                    <strong>✓ This document uses the selected typography above.</strong>
+                    Headings are displayed in Playfair Display (serif) and body text in Open Sans (sans-serif).
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== 6. WIREFRAMES ===== -->
+        <section id="wireframes" class="plan-section">
+            <h2>6. Wireframes</h2>
+            <div class="content-block">
+                <p>
+                    Below are wireframe diagrams for the home page of Flavor Journey in both mobile (narrow)
+                    and desktop (wide) views. These represent the layout structure and content relationships
+                    without final styling.
+                </p>
+
+                <div class="wireframes-container">
+                    <!-- Mobile Wireframe -->
+                    <div class="wireframe mobile-wireframe">
+                        <h3>Mobile View (Portrait — 375px)</h3>
+                        <div class="wireframe-screen">
+                            <!-- Header -->
+                            <div class="wf-header">
+                                <div class="wf-logo">🍳 Flavor Journey</div>
+                                <div class="wf-menu-btn"> Menu</div>
+                            </div>
+
+                            <!-- Hero -->
+                            <div class="wf-hero">
+                                <div class="wf-hero-text">
+                                    <div class="wf-h1">Discover Flavors From Around the World</div>
+                                    <div class="wf-text">Explore a curated collection of authentic recipes...</div>
+                                    <div class="wf-button">Browse All Recipes</div>
+                                </div>
+                            </div>
+
+                            <!-- Search -->
+                            <div class="wf-search">
+                                <div class="wf-search-bar">[ Search recipes... ]</div>
+                                <div class="wf-filters">
+                                    <span class="wf-filter active">All</span>
+                                    <span class="wf-filter">Italian</span>
+                                    <span class="wf-filter">Mexican</span>
+                                    <span class="wf-filter">Asian</span>
+                                </div>
+                            </div>
+
+                            <!-- Featured Recipes -->
+                            <div class="wf-featured">
+                                <div class="wf-h2">Featured Recipes</div>
+                                <div class="wf-recipe-card">
+                                    <div class="wf-image"></div>
+                                    <div class="wf-card-content">
+                                        <div class="wf-badge">Italian</div>
+                                        <div class="wf-h3">Margherita Pizza</div>
+                                        <div class="wf-meta"> 30 min | 📊 Medium</div>
+                                        <div class="wf-text-sm">A traditional Italian pizza...</div>
+                                    </div>
+                                </div>
+                                <div class="wf-recipe-card">
+                                    <div class="wf-image"></div>
+                                    <div class="wf-card-content">
+                                        <div class="wf-badge">Mexican</div>
+                                        <div class="wf-h3">Chicken Tacos</div>
+                                        <div class="wf-meta">⏱ 15 min | 📊 Easy</div>
+                                        <div class="wf-text-sm">Seasoned chicken tacos...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CTA -->
+                            <div class="wf-cta">
+                                <div class="wf-h2">Have a Recipe to Share?</div>
+                                <div class="wf-button">Submit Your Recipe</div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="wf-footer">
+                                <div class="wf-text-sm">© 2026 Flavor Journey</div>
+                                <div class="wf-footer-links">About | References</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Wireframe -->
+                    <div class="wireframe desktop-wireframe">
+                        <h3>Desktop View (Wide — 1200px)</h3>
+                        <div class="wireframe-screen">
+                            <!-- Header -->
+                            <div class="wf-header-desktop">
+                                <div class="wf-logo">🍳 Flavor Journey</div>
+                                <div class="wf-nav">
+                                    <span class="wf-nav-item active">Home</span>
+                                    <span class="wf-nav-item">Recipes</span>
+                                    <span class="wf-nav-item">Submit</span>
+                                    <span class="wf-nav-item">About</span>
+                                </div>
+                            </div>
+
+                            <!-- Hero -->
+                            <div class="wf-hero-desktop">
+                                <div class="wf-hero-content">
+                                    <div class="wf-h1-large">Discover Flavors From Around the World</div>
+                                    <div class="wf-text-large">Explore a curated collection of authentic recipes from diverse cuisines. From Italian pasta to Mexican tacos...</div>
+                                    <div class="wf-button-large">Browse All Recipes</div>
+                                </div>
+                            </div>
+
+                            <!-- Search -->
+                            <div class="wf-search-desktop">
+                                <div class="wf-search-bar-wide">[ Search recipes by name or ingredient... ]</div>
+                                <div class="wf-filters-wide">
+                                    <span class="wf-filter active">All</span>
+                                    <span class="wf-filter">Italian</span>
+                                    <span class="wf-filter">Mexican</span>
+                                    <span class="wf-filter">Asian</span>
+                                    <span class="wf-filter">Mediterranean</span>
+                                </div>
+                            </div>
+
+                            <!-- Featured Recipes Grid -->
+                            <div class="wf-featured-desktop">
+                                <div class="wf-h2-center">Featured Recipes</div>
+                                <div class="wf-text-center">Hand-picked favorites from our collection</div>
+                                <div class="wf-grid-3">
+                                    <div class="wf-recipe-card">
+                                        <div class="wf-image"></div>
+                                        <div class="wf-card-content">
+                                            <div class="wf-badge">Italian</div>
+                                            <div class="wf-h3">Margherita Pizza</div>
+                                            <div class="wf-meta">⏱ 30 min | 📊 Medium</div>
+                                            <div class="wf-text-sm">A traditional Italian pizza with fresh mozzarella...</div>
+                                        </div>
+                                    </div>
+                                    <div class="wf-recipe-card">
+                                        <div class="wf-image"></div>
+                                        <div class="wf-card-content">
+                                            <div class="wf-badge">Mexican</div>
+                                            <div class="wf-h3">Chicken Tacos</div>
+                                            <div class="wf-meta"> 15 min | 📊 Easy</div>
+                                            <div class="wf-text-sm">Seasoned chicken tacos with fresh salsa...</div>
+                                        </div>
+                                    </div>
+                                    <div class="wf-recipe-card">
+                                        <div class="wf-image"></div>
+                                        <div class="wf-card-content">
+                                            <div class="wf-badge">Asian</div>
+                                            <div class="wf-h3">Pad Thai</div>
+                                            <div class="wf-meta">⏱ 20 min | 📊 Medium</div>
+                                            <div class="wf-text-sm">Stir-fried rice noodles with shrimp and tofu...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CTA -->
+                            <div class="wf-cta-desktop">
+                                <div class="wf-h2-center">Have a Recipe to Share?</div>
+                                <div class="wf-text-center">We'd love to hear from you! Submit your favorite recipe.</div>
+                                <div class="wf-button-large">Submit Your Recipe</div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="wf-footer-desktop">
+                                <div class="wf-text-sm">© 2026 Flavor Journey. All rights reserved.</div>
+                                <div class="wf-footer-links">About | References</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Flavor Journey Site Plan — WDD 131 Project</p>
+        </div>
+    </footer>
+</body>
+</html>
