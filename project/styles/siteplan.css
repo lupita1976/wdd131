@@ -682,3 +682,43 @@ footer p {
         text-align: center;
     }
 }
+
+/* ===== Color Swatch Classes (replaces inline styles) ===== */
+.swatch-primary {
+    background-color: #e07a5f;
+}
+
+.swatch-secondary {
+    background-color: #3d405b;
+}
+
+.swatch-accent {
+    background-color: #81b29a;
+}
+
+.swatch-bg {
+    background-color: #fdfbf7;
+}
+
+.swatch-bg-alt {
+    background-color: #f4f1ea;
+}
+
+.swatch-text {
+    background-color: #2d2d2d;
+}
+
+/* ===== Font Example Classes (replaces inline styles) ===== */
+.font-heading-example {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.font-body-example {
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
