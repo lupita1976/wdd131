@@ -1,5 +1,5 @@
 // ===== Recipe Data (Array of Objects) =====
-const recipes = [
+let recipes = [
     {
         id: 1,
         title: "Classic Margherita Pizza",
@@ -194,19 +194,47 @@ const recipes = [
     }
 ];
 
+// ===== Load Submitted Recipes from localStorage =====
+function loadSubmittedRecipes() {
+    const stored = localStorage.getItem('submittedRecipes');
+    if (stored) {
+        try {
+            const submitted = JSON.parse(stored);
+            // Add submitted recipes to the main recipes array
+            submitted.forEach(recipe => {
+                // Avoid duplicates by checking ID
+                if (!recipes.find(r => r.id === recipe.id)) {
+                    recipes.push(recipe);
+                }
+            });
+        } catch (e) {
+            console.error('Error loading submitted recipes:', e);
+        }
+    }
+}
+
+// Load submitted recipes on page load
+loadSubmittedRecipes();
+
 // ===== DOM Elements =====
 const recipesGrid = document.getElementById('recipes-grid');
 const featuredGrid = document.getElementById('featured-recipes-grid');
 const favoritesGrid = document.getElementById('favorites-grid');
+const submittedGrid = document.getElementById('submitted-grid');
 const searchInput = document.getElementById('recipe-search');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const noResults = document.getElementById('no-results');
 const noFavorites = document.getElementById('no-favorites');
+const noSubmitted = document.getElementById('no-submitted');
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.getElementById('nav-menu');
 const recipeModal = document.getElementById('recipe-modal');
 const modalBody = document.getElementById('modal-body');
 const modalClose = document.querySelector('.modal-close');
+
+// ===== Form Elements =====
+const recipeForm = document.getElementById('recipe-form');
+const formMessage = document.getElementById('form-message');
 
 // ===== Function 1: Render Recipe Cards =====
 function renderRecipes(recipesToRender, gridElement, showFavoriteBtn = true) {
@@ -277,18 +305,19 @@ function filterRecipes() {
         return matchesSearch && matchesCuisine;
     });
 
-    renderRecipes(filtered, recipesGrid);
+    // Determine which grid to render based on current page
+    if (recipesGrid) {
+        renderRecipes(filtered, recipesGrid);
+    } else if (featuredGrid) {
+        const filteredFeatured = filtered.filter(recipe => recipe.featured);
+        renderRecipes(filteredFeatured, featuredGrid, false);
+    }
 }
 
 // ===== Function 3: Handle Filter Button Clicks =====
 function handleFilterClick(event) {
-    // Remove active class from all buttons
     filterButtons.forEach(btn => btn.classList.remove('active'));
-
-    // Add active class to clicked button
     event.target.classList.add('active');
-
-    // Re-filter recipes
     filterRecipes();
 }
 
@@ -297,14 +326,12 @@ function addCardClickListeners() {
     const cards = document.querySelectorAll('.recipe-card');
     cards.forEach(card => {
         card.addEventListener('click', (event) => {
-            // Don't open modal if clicking favorite button
             if (event.target.classList.contains('favorite-btn')) {
                 return;
             }
             
             const recipeId = parseInt(card.dataset.id);
             
-            // Use conditional branching
             if (recipeId) {
                 openRecipeModal(recipeId);
             }
@@ -322,13 +349,11 @@ function toggleMenu() {
 function saveViewedRecipe(recipeId) {
     let viewedRecipes = [];
 
-    // Retrieve from localStorage
     const stored = localStorage.getItem('viewedRecipes');
     if (stored) {
         viewedRecipes = JSON.parse(stored);
     }
 
-    // Use conditional branching to avoid duplicates
     if (!viewedRecipes.includes(recipeId)) {
         viewedRecipes.push(recipeId);
         localStorage.setItem('viewedRecipes', JSON.stringify(viewedRecipes));
@@ -339,25 +364,30 @@ function saveViewedRecipe(recipeId) {
 function toggleFavorite(recipeId) {
     let favorites = [];
 
-    // Retrieve from localStorage
     const stored = localStorage.getItem('favorites');
     if (stored) {
         favorites = JSON.parse(stored);
     }
 
-    // Use conditional branching
     const index = favorites.indexOf(recipeId);
+    
     if (index > -1) {
-        // Remove from favorites
+        const recipe = recipes.find(r => r.id === recipeId);
+        const recipeName = recipe ? recipe.title : 'this recipe';
+        
+        const confirmRemove = confirm(`Do you really want to remove "${recipeName}" from your favorites?`);
+        
+        if (!confirmRemove) {
+            return;
+        }
+        
         favorites.splice(index, 1);
     } else {
-        // Add to favorites
         favorites.push(recipeId);
     }
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
     
-    // Update UI
     updateFavoriteButtons();
     renderFavorites();
 }
@@ -394,7 +424,7 @@ function addFavoriteButtonListeners() {
     const favoriteBtns = document.querySelectorAll('.favorite-btn');
     favoriteBtns.forEach(btn => {
         btn.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent card click
+            event.stopPropagation();
             const recipeId = parseInt(btn.dataset.id);
             toggleFavorite(recipeId);
         });
@@ -403,6 +433,8 @@ function addFavoriteButtonListeners() {
 
 // ===== Function 11: Render Favorites =====
 function renderFavorites() {
+    if (!favoritesGrid) return;
+
     const stored = localStorage.getItem('favorites');
     
     if (!stored) {
@@ -412,8 +444,6 @@ function renderFavorites() {
     }
 
     const favoriteIds = JSON.parse(stored);
-    
-    // Use array filter method to get favorite recipes
     const favoriteRecipes = recipes.filter(recipe => favoriteIds.includes(recipe.id));
 
     if (favoriteRecipes.length === 0) {
@@ -427,14 +457,12 @@ function renderFavorites() {
 
 // ===== Function 12: Open Recipe Modal =====
 function openRecipeModal(recipeId) {
-    // Use array find method
     const recipe = recipes.find(r => r.id === recipeId);
     
     if (!recipe) return;
 
     const isFavorite = isRecipeFavorite(recipe.id);
 
-    // Use template literal for modal content
     const modalContent = `
         <div class="modal-body-content">
             <img
@@ -455,7 +483,7 @@ function openRecipeModal(recipeId) {
                     <span>Cook: ${recipe.cookTime}</span>
                 </div>
                 <div class="modal-meta-item">
-                    <span>📊</span>
+                    <span></span>
                     <span>${recipe.difficulty}</span>
                 </div>
                 <div class="modal-meta-item">
@@ -483,32 +511,240 @@ function openRecipeModal(recipeId) {
 
     modalBody.innerHTML = modalContent;
     recipeModal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
 
-    // Add event listener to modal favorite button
     const modalFavoriteBtn = modalBody.querySelector('.modal-favorite-btn');
     modalFavoriteBtn.addEventListener('click', () => {
         toggleFavorite(recipeId);
-        openRecipeModal(recipeId); // Refresh modal
+        openRecipeModal(recipeId);
     });
 
-    // Save to viewed recipes
     saveViewedRecipe(recipeId);
 }
 
 // ===== Function 13: Close Recipe Modal =====
 function closeRecipeModal() {
     recipeModal.classList.add('hidden');
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = '';
+}
+
+// ===== Function 14: Form Validation =====
+function validateField(field) {
+    const errorElement = document.getElementById(`${field.id}-error`);
+    let isValid = true;
+    let errorMessage = '';
+
+    // Remove previous states
+    field.classList.remove('error', 'success');
+    if (errorElement) errorElement.textContent = '';
+
+    // Check if required and empty
+    if (field.hasAttribute('required') && !field.value.trim()) {
+        isValid = false;
+        errorMessage = `${field.previousElementSibling.textContent.replace('*', '').trim()} is required.`;
+    }
+    // Check minlength
+    else if (field.minLength > 0 && field.value.trim().length < field.minLength) {
+        isValid = false;
+        errorMessage = `Must be at least ${field.minLength} characters.`;
+    }
+    // Check URL format
+    else if (field.type === 'url' && field.value.trim()) {
+        try {
+            new URL(field.value.trim());
+        } catch {
+            isValid = false;
+            errorMessage = 'Please enter a valid URL.';
+        }
+    }
+    // Check number range
+    else if (field.type === 'number') {
+        const numValue = parseInt(field.value);
+        if (isNaN(numValue) || numValue < parseInt(field.min) || numValue > parseInt(field.max)) {
+            isValid = false;
+            errorMessage = `Please enter a number between ${field.min} and ${field.max}.`;
+        }
+    }
+
+    // Update UI
+    if (!isValid) {
+        field.classList.add('error');
+        if (errorElement) errorElement.textContent = errorMessage;
+    } else if (field.value.trim()) {
+        field.classList.add('success');
+    }
+
+    return isValid;
+}
+
+// ===== Function 15: Validate Entire Form =====
+function validateForm() {
+    const fields = recipeForm.querySelectorAll('input, select, textarea');
+    let isFormValid = true;
+
+    fields.forEach(field => {
+        if (field.hasAttribute('required') || field.value.trim()) {
+            const fieldValid = validateField(field);
+            if (!fieldValid) {
+                isFormValid = false;
+            }
+        }
+    });
+
+    return isFormValid;
+}
+
+// ===== Function 16: Handle Form Submission =====
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    // Validate form
+    if (!validateForm()) {
+        showFormMessage('Please fix the errors above before submitting.', 'error');
+        return;
+    }
+
+    // Get form values
+    const recipeName = document.getElementById('recipe-name').value.trim();
+    const cuisineType = document.getElementById('cuisine-type').value;
+    const difficulty = document.getElementById('difficulty').value;
+    const servings = document.getElementById('servings').value.trim();
+    const prepTime = document.getElementById('prep-time').value.trim();
+    const cookTime = document.getElementById('cook-time').value.trim();
+    const imageUrl = document.getElementById('image-url').value.trim();
+    const description = document.getElementById('description').value.trim();
+    const ingredientsText = document.getElementById('ingredients').value.trim();
+    const instructionsText = document.getElementById('instructions').value.trim();
+
+    // Parse ingredients and instructions (split by new line)
+    const ingredients = ingredientsText.split('\n').filter(line => line.trim());
+    const instructions = instructionsText.split('\n').filter(line => line.trim());
+
+    // Use default image if none provided
+    const defaultImage = 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=800&h=600&fit=crop';
+    const finalImage = imageUrl || defaultImage;
+
+    // Create new recipe object
+    const newRecipe = {
+        id: Date.now(), // Use timestamp as unique ID
+        title: recipeName,
+        cuisine: cuisineType,
+        difficulty: difficulty,
+        prepTime: prepTime,
+        cookTime: cookTime,
+        servings: servings,
+        description: description,
+        image: finalImage,
+        featured: false,
+        ingredients: ingredients,
+        instructions: instructions,
+        submitted: true,
+        submittedDate: new Date().toISOString()
+    };
+
+    // Save to localStorage
+    let submittedRecipes = [];
+    const stored = localStorage.getItem('submittedRecipes');
+    if (stored) {
+        submittedRecipes = JSON.parse(stored);
+    }
+    submittedRecipes.push(newRecipe);
+    localStorage.setItem('submittedRecipes', JSON.stringify(submittedRecipes));
+
+    // Add to main recipes array
+    recipes.push(newRecipe);
+
+    // Show success message
+    showFormMessage(`🎉 Success! "${recipeName}" has been submitted and added to our collection.`, 'success');
+
+    // Reset form
+    recipeForm.reset();
+    clearFormStates();
+
+    // Re-render submitted recipes
+    renderSubmittedRecipes();
+
+    // Scroll to submitted recipes section
+    setTimeout(() => {
+        document.querySelector('.submitted-recipes').scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+}
+
+// ===== Function 17: Show Form Message =====
+function showFormMessage(message, type) {
+    formMessage.textContent = message;
+    formMessage.className = `form-message ${type}`;
+    formMessage.classList.remove('hidden');
+
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        formMessage.classList.add('hidden');
+    }, 5000);
+}
+
+// ===== Function 18: Clear Form States =====
+function clearFormStates() {
+    const fields = recipeForm.querySelectorAll('input, select, textarea');
+    fields.forEach(field => {
+        field.classList.remove('error', 'success');
+    });
+    const errorMessages = recipeForm.querySelectorAll('.error-message');
+    errorMessages.forEach(msg => {
+        msg.textContent = '';
+    });
+}
+
+// ===== Function 19: Render Submitted Recipes =====
+function renderSubmittedRecipes() {
+    if (!submittedGrid) return;
+
+    const stored = localStorage.getItem('submittedRecipes');
+    
+    if (!stored) {
+        submittedGrid.innerHTML = '';
+        noSubmitted.classList.remove('hidden');
+        return;
+    }
+
+    const submittedRecipes = JSON.parse(stored);
+
+    if (submittedRecipes.length === 0) {
+        submittedGrid.innerHTML = '';
+        noSubmitted.classList.remove('hidden');
+    } else {
+        noSubmitted.classList.add('hidden');
+        renderRecipes(submittedRecipes, submittedGrid, true);
+    }
+}
+
+// ===== Function 20: Character Counter for Description =====
+function updateCharCounter() {
+    const descriptionField = document.getElementById('description');
+    const counter = document.getElementById('description-counter');
+    
+    if (descriptionField && counter) {
+        const currentLength = descriptionField.value.length;
+        const maxLength = descriptionField.maxLength || 500;
+        counter.textContent = `${currentLength} / ${maxLength} characters`;
+        
+        // Change color when approaching limit
+        if (currentLength > maxLength * 0.9) {
+            counter.style.color = '#dc3545';
+        } else if (currentLength > maxLength * 0.7) {
+            counter.style.color = '#ffc107';
+        } else {
+            counter.style.color = 'var(--color-text-light)';
+        }
+    }
 }
 
 // ===== Event Listeners =====
-// Search input - listen for input events
+// Search input
 if (searchInput) {
     searchInput.addEventListener('input', filterRecipes);
 }
 
-// Filter buttons - listen for click events
+// Filter buttons
 filterButtons.forEach(btn => {
     btn.addEventListener('click', handleFilterClick);
 });
@@ -534,21 +770,68 @@ if (recipeModal) {
 
 // Close modal with Escape key
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !recipeModal.classList.contains('hidden')) {
+    if (event.key === 'Escape' && recipeModal && !recipeModal.classList.contains('hidden')) {
         closeRecipeModal();
     }
 });
 
+// Form submission
+if (recipeForm) {
+    recipeForm.addEventListener('submit', handleFormSubmit);
+}
+
+// Real-time validation on blur
+if (recipeForm) {
+    const formFields = recipeForm.querySelectorAll('input, select, textarea');
+    formFields.forEach(field => {
+        field.addEventListener('blur', () => {
+            if (field.hasAttribute('required') || field.value.trim()) {
+                validateField(field);
+            }
+        });
+        
+        field.addEventListener('input', () => {
+            // Clear error when user starts typing
+            if (field.classList.contains('error')) {
+                field.classList.remove('error');
+                const errorElement = document.getElementById(`${field.id}-error`);
+                if (errorElement) errorElement.textContent = '';
+            }
+        });
+    });
+}
+
+// Character counter for description
+const descriptionField = document.getElementById('description');
+if (descriptionField) {
+    descriptionField.addEventListener('input', updateCharCounter);
+}
+
+// Form reset handler
+if (recipeForm) {
+    recipeForm.addEventListener('reset', () => {
+        setTimeout(() => {
+            clearFormStates();
+            formMessage.classList.add('hidden');
+            if (descriptionField) updateCharCounter();
+        }, 10);
+    });
+}
+
 // ===== Initialize Page =====
-// Check which page we're on and render accordingly
 if (recipesGrid) {
-    // We're on the recipes page - render all recipes
+    // We're on the recipes page
     renderRecipes(recipes, recipesGrid);
     renderFavorites();
 } else if (featuredGrid) {
-    // We're on the home page - render only featured recipes
+    // We're on the home page
     const featuredRecipes = recipes.filter(recipe => recipe.featured);
     renderRecipes(featuredRecipes, featuredGrid, false);
+}
+
+if (submittedGrid) {
+    // We're on the submit page
+    renderSubmittedRecipes();
 }
 
 // Log to console for debugging

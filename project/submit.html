@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flavor Journey - Discover delicious recipes from cuisines around the world">
+    <title>Flavor Journey - Home Final Project WDD - 131</title> 
+    <meta name="author" content="Guadalupe Fernández" />
+
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Flavor Journey - Discover delicious recipes from cuisines around the world">
+    <meta property="og:description" content="Flavor Journey is your ultimate destination for authentic recipes from around the globe. Explore Italian, Mexican, Asian, Mediterranean and more!">
+    <meta property="og:image" content="https://lupita1976.github.io/wdd131/project/images/flavors-preview.png">
+    <meta property="og:url" content="https://lupita1976.github.io/wdd131/project/index.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+    
+    
+    
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" aria-label="Flavor Journey Home">
+                     Flavor Journey
+                </a>
+            </div>
+            <nav aria-label="Main navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu">
+                    ☰ Menu
+                </button>
+                <ul id="nav-menu" class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="submit.html" class="active" aria-current="page">Submit a Recipe</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header" aria-labelledby="page-heading">
+            <h1 id="page-heading">Submit a Recipe</h1>
+            <p class="page-subtitle">
+                Share your favorite recipe with our community! Fill out the form below
+                and your recipe will be added to our collection.
+            </p>
+        </section>
+
+        <!-- Form Section -->
+        <section class="form-section" aria-labelledby="form-heading">
+            <div class="form-container">
+                <h2 id="form-heading">Recipe Details</h2>
+                <p class="form-description">
+                    All fields marked with <span class="required">*</span> are required.
+                </p>
+
+                <form id="recipe-form" novalidate>
+                    <!-- Recipe Name -->
+                    <div class="form-group">
+                        <label for="recipe-name">Recipe Name <span class="required">*</span></label>
+                        <input
+                            type="text"
+                            id="recipe-name"
+                            name="recipeName"
+                            placeholder="e.g., Grandma's Apple Pie"
+                            required
+                            minlength="3"
+                            maxlength="100"
+                            aria-describedby="recipe-name-error"
+                        >
+                        <span id="recipe-name-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <!-- Cuisine Type -->
+                    <div class="form-group">
+                        <label for="cuisine-type">Cuisine Type <span class="required">*</span></label>
+                        <select id="cuisine-type" name="cuisineType" required aria-describedby="cuisine-error">
+                            <option value="">-- Select a cuisine --</option>
+                            <option value="italian">Italian</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="asian">Asian</option>
+                            <option value="mediterranean">Mediterranean</option>
+                            <option value="american">American</option>
+                            <option value="french">French</option>
+                            <option value="indian">Indian</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span id="cuisine-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <!-- Difficulty & Servings Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="difficulty">Difficulty <span class="required">*</span></label>
+                            <select id="difficulty" name="difficulty" required aria-describedby="difficulty-error">
+                                <option value="">-- Select difficulty --</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                            <span id="difficulty-error" class="error-message" role="alert"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="servings">Servings <span class="required">*</span></label>
+                            <input
+                                type="number"
+                                id="servings"
+                                name="servings"
+                                placeholder="e.g., 4"
+                                min="1"
+                                max="100"
+                                required
+                                aria-describedby="servings-error"
+                            >
+                            <span id="servings-error" class="error-message" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <!-- Prep Time & Cook Time Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prep-time">Prep Time <span class="required">*</span></label>
+                            <input
+                                type="text"
+                                id="prep-time"
+                                name="prepTime"
+                                placeholder="e.g., 15 min"
+                                required
+                                aria-describedby="prep-time-error"
+                            >
+                            <span id="prep-time-error" class="error-message" role="alert"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cook-time">Cook Time <span class="required">*</span></label>
+                            <input
+                                type="text"
+                                id="cook-time"
+                                name="cookTime"
+                                placeholder="e.g., 30 min"
+                                required
+                                aria-describedby="cook-time-error"
+                            >
+                            <span id="cook-time-error" class="error-message" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <!-- Image URL -->
+                    <div class="form-group">
+                        <label for="image-url">Image URL (optional)</label>
+                        <input
+                            type="url"
+                            id="image-url"
+                            name="imageUrl"
+                            placeholder="https://example.com/your-recipe-image.jpg"
+                            aria-describedby="image-url-error image-url-hint"
+                        >
+                        <span id="image-url-hint" class="form-hint">Leave empty to use a default image</span>
+                        <span id="image-url-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label for="description">Description <span class="required">*</span></label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            rows="3"
+                            placeholder="Briefly describe your recipe..."
+                            required
+                            minlength="20"
+                            maxlength="500"
+                            aria-describedby="description-error description-counter"
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="description-counter">0 / 500 characters</span>
+                        </div>
+                        <span id="description-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <!-- Ingredients -->
+                    <div class="form-group">
+                        <label for="ingredients">Ingredients <span class="required">*</span></label>
+                        <textarea
+                            id="ingredients"
+                            name="ingredients"
+                            rows="6"
+                            placeholder="Enter one ingredient per line:&#10;2 cups flour&#10;1 cup sugar&#10;3 eggs"
+                            required
+                            aria-describedby="ingredients-error ingredients-hint"
+                        ></textarea>
+                        <span id="ingredients-hint" class="form-hint">Enter one ingredient per line</span>
+                        <span id="ingredients-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <!-- Instructions -->
+                    <div class="form-group">
+                        <label for="instructions">Instructions <span class="required">*</span></label>
+                        <textarea
+                            id="instructions"
+                            name="instructions"
+                            rows="8"
+                            placeholder="Enter one step per line:&#10;Preheat oven to 350°F&#10;Mix dry ingredients&#10;Add wet ingredients"
+                            required
+                            aria-describedby="instructions-error instructions-hint"
+                        ></textarea>
+                        <span id="instructions-hint" class="form-hint">Enter one step per line</span>
+                        <span id="instructions-error" class="error-message" role="alert"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Submit Recipe</button>
+                        <button type="reset" class="reset-btn">Clear Form</button>
+                    </div>
+                </form>
+
+                <!-- Success/Error Messages -->
+                <div id="form-message" class="form-message hidden" role="status" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Submitted Recipes Section -->
+        <section class="submitted-recipes" aria-labelledby="submitted-heading">
+            <h2 id="submitted-heading">Community Recipes</h2>
+            <p class="section-description">
+                Recipes submitted by our community. Thank you for sharing!
+            </p>
+            <div id="submitted-grid" class="recipes-grid" role="list">
+                <!-- Submitted recipes will be dynamically inserted here -->
+            </div>
+            <div id="no-submitted" class="no-results hidden" role="status">
+                <p>No recipes have been submitted yet. Be the first to share your recipe!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Flavor Journey. All rights reserved. | Guadalupe Fernández | WDD 131 Project</p>
+            <nav aria-label="Footer navigation">
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="references.html">References</a></li>
+                    <li><a href="siteplan.html">Site Plan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
