@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all recipes from Flavor Journey - Italian, Mexican, Asian, Mediterranean and more">
+    <title>Recipes - Flavor Journey</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" aria-label="Flavor Journey Home">
+                     Flavor Journey
+                </a>
+            </div>
+            <nav aria-label="Main navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu">
+                    ☰ Menu
+                </button>
+                <ul id="nav-menu" class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html" class="active" aria-current="page">Recipes</a></li>
+                    <li><a href="submit.html">Submit a Recipe</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header" aria-labelledby="page-heading">
+            <h1 id="page-heading">All Recipes</h1>
+            <p class="page-subtitle">
+                Browse our complete collection of authentic recipes from around the world.
+                Filter by cuisine, search by name, and save your favorites!
+            </p>
+        </section>
+
+        <!-- Search & Filter Section -->
+        <section class="search-section" aria-labelledby="filter-heading">
+            <h2 id="filter-heading" class="visually-hidden">Filter and Search Recipes</h2>
+            <div class="search-container">
+                <label for="recipe-search" class="visually-hidden">Search recipes</label>
+                <input
+                    type="search"
+                    id="recipe-search"
+                    placeholder="Search recipes by name or ingredient..."
+                    aria-label="Search recipes"
+                >
+                <div class="filter-buttons" role="group" aria-label="Filter by cuisine">
+                    <button class="filter-btn active" data-cuisine="all">All</button>
+                    <button class="filter-btn" data-cuisine="italian">Italian</button>
+                    <button class="filter-btn" data-cuisine="mexican">Mexican</button>
+                    <button class="filter-btn" data-cuisine="asian">Asian</button>
+                    <button class="filter-btn" data-cuisine="mediterranean">Mediterranean</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section class="favorites-section" aria-labelledby="favorites-heading">
+            <h2 id="favorites-heading">My Favorites</h2>
+            <div id="favorites-grid" class="recipes-grid" role="list">
+                <!-- Favorite recipes will be dynamically inserted here -->
+            </div>
+            <p id="no-favorites" class="no-favorites-message">
+                You haven't saved any favorites yet. Click the ❤️ button on any recipe to save it here!
+            </p>
+        </section>
+
+        <!-- All Recipes Section -->
+        <section class="all-recipes" aria-labelledby="all-recipes-heading">
+            <h2 id="all-recipes-heading">All Recipes</h2>
+            <div id="recipes-grid" class="recipes-grid" role="list">
+                <!-- All recipes will be dynamically inserted here by JavaScript -->
+            </div>
+            <div id="no-results" class="no-results hidden" role="status">
+                <p>No recipes found matching your criteria. Try a different search or filter.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Recipe Detail Modal -->
+    <div id="recipe-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close recipe details">&times;</button>
+            <div id="modal-body">
+                <!-- Recipe details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Flavor Journey. All rights reserved. | Guadalupe Fernández | WDD 131 Project</p>
+            <nav aria-label="Footer navigation">
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="references.html">References</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

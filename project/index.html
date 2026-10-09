@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flavor Journey - Discover delicious recipes from cuisines around the world">
+    <title>Flavor Journey - Home Final Project WDD - 131</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site plan for Flavor Journey - a recipe collection website">
+    <meta name="author" content="Guadalupe Fernández" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" aria-label="Flavor Journey Home">
+                     Flavor Journey
+                </a>
+            </div>
+            <nav aria-label="Main navigation">
+                <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu">
+                    ☰ Menu
+                </button>
+                <ul id="nav-menu" class="nav-list">
+                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="submit.html">Submit a Recipe</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <h1 id="hero-heading">Discover Flavors From Around the World</h1>
+                <p class="hero-subtitle">
+                    Explore a curated collection of authentic recipes from diverse cuisines.
+                    From Italian pasta to Mexican tacos, your next favorite dish is just a click away.
+                </p>
+                <a href="recipes.html" class="cta-button">Browse All Recipes</a>
+            </div>
+        </section>
+
+        <!-- Search & Filter Section -->
+        <section class="search-section" aria-labelledby="search-heading">
+            <h2 id="search-heading" class="visually-hidden">Search and Filter Recipes</h2>
+            <div class="search-container">
+                <label for="recipe-search" class="visually-hidden">Search recipes</label>
+                <input
+                    type="search"
+                    id="recipe-search"
+                    placeholder="Search recipes by name or ingredient..."
+                    aria-label="Search recipes"
+                >
+                <div class="filter-buttons" role="group" aria-label="Filter by cuisine">
+                    <button class="filter-btn active" data-cuisine="all">All</button>
+                    <button class="filter-btn" data-cuisine="italian">Italian</button>
+                    <button class="filter-btn" data-cuisine="mexican">Mexican</button>
+                    <button class="filter-btn" data-cuisine="asian">Asian</button>
+                    <button class="filter-btn" data-cuisine="mediterranean">Mediterranean</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Recipes Section -->
+        <section class="featured-recipes" aria-labelledby="featured-heading">
+            <h2 id="featured-heading">Featured Recipes</h2>
+            <p class="section-description">
+                Hand-picked favorites from our collection. Click any recipe to view full details!
+            </p>
+            <div id="featured-recipes-grid" class="recipes-grid" role="list">
+                <!-- Recipes will be dynamically inserted here by JavaScript -->
+            </div>
+            <div id="no-results" class="no-results hidden" role="status">
+                <p>No recipes found matching your criteria. Try a different search or filter.</p>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section" aria-labelledby="cta-heading">
+            <h2 id="cta-heading">Have a Recipe to Share?</h2>
+            <p>
+                We'd love to hear from you! Submit your favorite recipe and share it with our community.
+            </p>
+            <a href="submit.html" class="cta-button secondary">Submit Your Recipe</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Flavor Journey. All rights reserved. | Guadalupe Fernández | WDD 131 Project</p>
+            <nav aria-label="Footer navigation">
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="references.html">References</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
